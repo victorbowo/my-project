@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 3, 2015 5:41:54 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.javaee.model.Files" table="files" catalog="filesharing">
+        <id name="fileId" type="java.lang.Integer">
+            <column name="fileId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="login" class="com.javaee.model.Login" fetch="select">
+            <column name="loginId" />
+        </many-to-one>
+        <property name="filename" type="string">
+            <column name="filename" length="128" />
+        </property>
+        <property name="fileData" type="binary">
+            <column name="fileData" />
+        </property>
+    </class>
+</hibernate-mapping>

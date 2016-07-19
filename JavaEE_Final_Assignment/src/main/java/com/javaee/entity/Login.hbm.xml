@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 3, 2015 5:41:54 PM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.javaee.model.Login" table="login" catalog="filesharing">
+        <id name="loginId" type="java.lang.Integer">
+            <column name="loginId" />
+            <generator class="identity" />
+        </id>
+        <property name="loginName" type="string">
+            <column name="loginName" length="20" not-null="true" />
+        </property>
+        <property name="loginPass" type="string">
+            <column name="loginPass" length="20" not-null="true" />
+        </property>
+        <property name="level" type="string">
+            <column name="level" length="10" not-null="true" />
+        </property>
+        <set name="fileses" table="files" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="loginId" />
+            </key>
+            <one-to-many class="com.javaee.model.Files" />
+        </set>
+    </class>
+</hibernate-mapping>
